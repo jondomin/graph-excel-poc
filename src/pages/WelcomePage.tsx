@@ -25,7 +25,7 @@ export default class WelcomePage extends React.Component<any, any> {
   render() {
     return (
       <Jumbotron>
-        <h1>React Graph Tutorial</h1>
+        <h1>React Graph POC</h1>
         <p className="lead">
           This sample app shows how to use the Microsoft Graph API to access Outlook and OneDrive
           data from React

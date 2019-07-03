@@ -7,13 +7,17 @@ import { Label } from 'reactstrap';
 import { Input } from 'reactstrap';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import LoadingSpinner from '../components/LoadingSpinner';
 const OneDriveList = props => {
   const [oneDriveFiles, setOneDriveFiles] = useState([]);
   const [searchText, setSearchText] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSearch = async evt => {
     evt.preventDefault();
+    setIsLoading(true);
     const results = await searchFiles(searchText);
+    setIsLoading(false);
     if (results) {
       setOneDriveFiles(results.value);
     }
@@ -34,6 +38,7 @@ const OneDriveList = props => {
         </Button>
       </Form>
       <Table>
+        <LoadingSpinner isLoading={isLoading} />
         <thead>
           <tr>
             <th scope="col">Document Name</th>
